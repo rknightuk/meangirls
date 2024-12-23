@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <title>How long since Robb watched Mean Girls?</title>
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=caveat-brush:400" rel="stylesheet" />
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+
+    <meta property="og:title" content="How long since Robb watched Mean Girls?">
+    <meta property="og:url" content="https://meangirls.rknight.me">
+    <meta name="description" content="It's been {{ logs.latest.date.diff }}">
+    <meta property="og:description" content="It's been {{ logs.latest.date.diff }}">
+    <meta property="og:image" content="https://meangirls.rknight.me/assets/preview.jpg">
+    <meta name="fediverse:creator" content="@robb@social.lol">
+
+    <meta name="theme-color" content="#ff92bc">
+
+    <link rel="alternate" type="application/json" title="JSON Feed" href="https://rknight.me/api/meangirls.json">
+
+
+    <style>
+
+        :root {
+            --text: #1a1c1c;
+            --bg: #ff92bc;
+        }
+
+        html {
+            font-family: 'futura', sans-serif;
+            font-weight: normal;
+            font-size: 1.8em;
+            max-width: 40rem;
+            padding: 1rem;
+            margin: auto;
+            line-height: 1.5rem;
+            background-color: var(--bg);
+            text-align: center;
+            color: var(--text);
+        }
+
+        header p {
+            margin: 0.5em 0;
+        }
+
+        h1 {
+            font-weight: normal;
+            margin: 0.5em 0;
+            font-size: 3em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 650px) {
+            html {
+                font-size: 1.5em;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @font-face {
+            font-family: 'futura';
+            src: url('/assets/futura.woff2 ') format('woff2');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'futura-extra-bold';
+            src: url('/assets/futura-extra-bold.woff2 ') format('woff2');
+            font-display: swap;
+        }
+
+        .futura-extra-bold {
+            font-family: 'futura-extra-bold', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'burn';
+            src: url('/assets/burn.woff2 ') format('woff2');
+            font-display: swap;
+        }
+
+        .burn {
+            font-family: 'burn', sans-serif;
+            font-size: 1.5em;
+            line-height: 1.5em;
+        }
+
+        .watched-on {
+            font-size: 0.8em;
+        }
+        footer {
+            font-size: 0.7em;
+            text-transform: lowercase;
+        }
+
+        a {
+            color: var(--links);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .burn a {
+            text-decoration: none;
+        }
+
+        .burn a:hover {
+            color: black;
+        }
+
+        .book {
+            border-style: solid;
+            border-width: 10px 10px 10px 10px;
+            border-image: url('/assets/border.svg') 10 10 10 10 stretch stretch;
+            font-family: 'Caveat Brush', handwriting;
+            padding: 5px;
+        }
+    </style>
+
+    <script type="module" src="/assets/snow-fall.js"></script>
+    <script type="module" src="/assets/is-land.js"></script>
+</head>
+
+<body>
+
+    <is-land on:media="(prefers-reduced-motion: no-preference)">
+        <snow-fall text="💋"></snow-fall>
+    </is-land>
+
+    <header>
+        <p style="text-transform: uppercase;color: #3d3d3d">How long since Robb watched</p>
+        <h1>
+            <span class="futura-extra-bold">Mean</span><span class="futura">Girls</span>
+        </h1>
+    </header>
+
+    <div class="book">
+        <p>
+            <span class="burn">
+                <a target="_blank" title="{{ logs.latest.date.human }}" href="{{ logs.latest.url }}">{{ logs.latest.date.diff }} ago</a>
+            </span>
+        </p>
+        
+        {% if logs.all.length > 0 %}
+            <p class="watched-on">and previously on...</a></p>
+        {% endif %}
+
+        {% for entry in logs.all %}
+            <p>
+                <span class="burn">
+                    <a target="_blank" href="{{ entry.url }}">{{ entry.date.human }}</a>
+                </span>
+            </p>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>a <a href="https://rknight.me">Robb<span class="futura-extra-bold">Knight</span></a> curio</p>
+    </footer>
+</body>
+
+</html>
